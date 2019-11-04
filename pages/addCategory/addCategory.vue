@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<view>
-			<input v-model="name" placeholder="输入类别" type="text">
+			<input v-model="name" placeholder="请输入类别" type="text">
 		</view>
 		<button @tap="addCategory">确定</button>
 	</view>
