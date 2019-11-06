@@ -2,24 +2,22 @@
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		{
 			"path": "pages/index/index",
-			"style": {
-				
-			}
+			"style": {}
 		}
 	    ,{
-            "path" : "pages/selectCategory/selectCategory",
+            "path" : "pages/category/selectCategory/selectCategory",
             "style" : {}
         }
         ,{
-            "path" : "pages/addCategory/addCategory",
+            "path" : "pages/category/addCategory/addCategory",
             "style" : {}
         }
         ,{
-            "path" : "pages/addProduct/addProduct",
+            "path" : "pages/product/addProduct/addProduct",
             "style" : {}
         }
         ,{
-            "path" : "pages/selectProducts/selectProducts",
+            "path" : "pages/product/selectProducts/selectProducts",
             "style" : {}
         }
     ],

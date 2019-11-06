@@ -1,10 +1,31 @@
 <template>
 	<view class="content">
-		<button @tap="selectProduct">按分页查询商品</button>
-		<button @tap="addProduct">添加商品</button>
-		
-		<button @tap="selectCategory">查询所有分类</button>
-		<button @tap="addCategory">添加分类</button>
+		<view>
+			<h1>商品模块：</h1>
+			<view>
+				<button @tap="selectProduct">按分页查询商品</button>
+				<button @tap="addProduct">添加商品</button>
+			</view>
+		</view>
+		<view>
+			<h1>类别模块：</h1>
+			<view>
+				<button @tap="selectCategory">查询所有分类</button>
+				<button @tap="addCategory">添加分类</button>
+			</view>
+		</view>
+		<view>
+			<h1>圈子模块：</h1>
+			<view>
+				
+			</view>
+		</view>
+		<view>
+			<h1>个人中心模块：</h1>
+			<view>
+				
+			</view>
+		</view>
 	</view>
 </template>
 
@@ -21,22 +42,22 @@ export default {
 	methods: {
 		selectCategory(){
 			uni.navigateTo({
-				url:'../selectCategory/selectCategory'
+				url:'/pages/category/selectCategory/selectCategory'
 			})
 		},
 		addCategory(){
 			uni.navigateTo({
-				url:'../addCategory/addCategory'
+				url:'/pages/category/addCategory/addCategory'
 			})
 		},
 		addProduct(){
 			uni.navigateTo({
-				url:'../addProduct/addProduct'
+				url:'/pages/product/addProduct/addProduct'
 			})
 		},
 		selectProduct(){
 			uni.navigateTo({
-				url:'../selectProducts/selectProducts'
+				url:'/pages/product/selectProducts/selectProducts'
 			})
 		},
 	}

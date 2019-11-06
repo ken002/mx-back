@@ -16,6 +16,13 @@
 		},
 		methods: {
 			addCategory(){
+				if(this.name===''){
+					uni.showToast({
+					    title: '请输入类别',
+					});
+					return;
+				}
+				
 				uni.request({
 						url: 'http://localhost:3000/api/category',
 						method: 'POST',
@@ -23,7 +30,15 @@
 							name: this.name,
 						},
 						success: res => {
-							console.log('添加分类',res);
+							console.log('添加分类:',res);
+							
+							uni.showToast({
+							    title: res.data.message,
+							});
+							
+							if(res.data.code===1){
+								this.name='';
+							}
 						}
 					});
 			}
