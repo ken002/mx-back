@@ -20,30 +20,27 @@ export default {
 		this.selectCategory();
 	},
 	methods: {
-		selectCategory() {
-			uni.request({
-				url: 'http://localhost:3000/api/category',
-				success: res => {
-					console.log('查询商品分类:', res);
-					this.items = res.data.data;
-				}
+		async selectCategory() {
+			const res = await this.$util.request({
+				requestUrl:'api/category'
 			});
+			console.log('查询所有类别：',res);
+			
+			if(res!==undefined){
+				this.items = res.data.data;
+			}
 		},
-		deleteCategory(id){
-			uni.request({
-				url: 'http://localhost:3000/api/category/'+id,
-				method:'DELETE',
-				success: res => {
-					console.log('删除商品:', res);
-					uni.showToast({
-					    title: res.data.message,
-					});
-					
-					if(res.data.code===1){
-						this.selectCategory();
-					}
-				}
+		async deleteCategory(id){
+			const res = await this.$util.request({
+				requestUrl:'api/category/'+id,
+				method:'DELETE'
 			});
+			console.log('删除某类别',res);
+			
+			if(res!==undefined){
+				this.$util.toast('删除成功');
+				this.selectCategory();
+			}
 		}
 	}
 };

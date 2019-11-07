@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<view>选择类别</view>
-		<radio-group v-if="items.length>0" @change="radioChange">
+		<radio-group @change="radioChange">
 			<label class="uni-list-cell uni-list-cell-pd" v-for="(item, index) in items" :key="item.id">
 				<view><radio :value="item.id" :checked="index === current" /></view>
 				<view>{{ item.name }}</view>
@@ -19,7 +19,7 @@
 		</view>
 		<image :src="form.image"></image>
 		<button @tap="uploadImage">上传图片</button>
-		<button @tap="confirm">{{confirmBtnName}}</button>
+		<button @tap="confirm">{{ confirmBtnName }}</button>
 	</view>
 </template>
 
@@ -35,134 +35,125 @@ export default {
 				intro: '',
 				online: true,
 				hot: true,
-				category: '',
+				category: ''
 			},
-			type:'',
-			id:'',
-			confirmBtnName:'确定',
+			type: '',
+			id: '',
+			confirmBtnName: '确定'
 		};
 	},
 	onLoad(option) {
-		console.log(option);
-		this.type=option.type;
-		this.id=option.id;
-		if(this.type==='modify'){
-			this.confirmBtnName='修改';
-			this.selectDetail();
-		}
-		
-		this.selectCategory();
+		(async () => {
+			console.log(option);
+			this.type = option.type;
+			this.id = option.id;
+			
+			await this.selectCategory();
+			
+			if (this.type === 'modify') {
+				this.confirmBtnName = '修改';
+				this.selectDetail();
+			}
+		})
 	},
 	methods: {
-		selectCategory() {
-			uni.request({
-				url: 'http://localhost:3000/api/category',
-				success: res => {
-					console.log('查询商品分类:', res);
-					this.items = res.data.data;
-					this.form.category = this.items[0].id;
-				}
+		async selectCategory() {
+			const res = await this.$util.request({
+				requestUrl: 'api/category'
 			});
-		},
-		selectDetail(){
-			uni.request({
-				url: 'http://localhost:3000/api/products/'+this.id,
-				success: res => {
-					console.log('查询某商品:', res);
-					
-					this.form=res.data.data;
+			console.log('查询所有类别：', res);
+
+			if (res !== undefined) {
+				this.items = res.data.data;
+				if (this.items.length === 0) {
+					this.$util.toast('无类别可选，请先去添加类别');
 				}
-			});
+			}
 		},
-		uploadImage() {
-			uni.chooseImage({
-				count: 1, //默认9
-				sizeType: ['compressed'], //可以指定是原图还是压缩图，默认二者都有
-				sourceType: ['album'], //从相册选择
-				success: res => {
-					uni.uploadFile({
-						url: 'http://localhost:3000/api/upload',
-						filePath: res.tempFilePaths[0],
-						fileType: 'image',
-						name: 'file',
-						success: res => {
-							console.log('上传图片:', res);
-							this.form.image = JSON.parse(res.data).data.url;
-						}
-					});
+		async selectDetail() {
+			const res = await this.$util.request({
+				requestUrl: 'api/products/' + this.id
+			});
+			console.log('查询商品详情', res);
+			if (res !== undefined) {
+				this.form = res.data.data;
+				for(const i=0;i<this.items.length;i++){
+					if(this.items[i].id===this.form.category){
+						this.current=i;
+						this.form.category = this.items[i].id;
+						break;
+					}
 				}
-			});
+			}
 		},
-		confirm() {
-			if(this.form.name===''){
-				uni.showToast({
-				    title: '请输入名称',
-				});
+		async toUploadImage(path) {
+			const backPath = await this.$util.uploadImage(path);
+			this.form.image = backPath;
+		},
+		async uploadImage() {
+			const path = await this.$util.selectImage();
+			this.toUploadImage(path);
+		},
+		async confirm() {
+			if (this.form.category === '') {
+				this.$util.toast('请选择类别');
 				return;
 			}
-			if(this.form.intro===''){
-				uni.showToast({
-				    title: '请输入描述',
-				});
+
+			if (this.form.name === '') {
+				this.$util.toast('请输入名称');
 				return;
 			}
-			if(this.form.image===''){
-				uni.showToast({
-				    title: '请上传图片',
-				});
+			if (this.form.intro === '') {
+				this.$util.toast('请输入描述');
 				return;
 			}
-			
+			if (this.form.image === '') {
+				this.$util.toast('请上传图片');
+				return;
+			}
+
 			console.log(this.form);
-			
-			if(this.type==='modify'){
-				uni.request({
-					url: 'http://localhost:3000/api/products/'+this.id,
+
+			if (this.type === 'modify') {
+				const res = await this.$util.request({
+					requestUrl: 'api/products/' + this.id,
 					method: 'PUT',
-					data: this.form,
-					success: res => {
-						console.log('修改商品:',res);
-						
-						uni.showToast({
-						    title: res.data.message,
-						});
-						
-						if(res.data.code==1){
-							uni.navigateBack();
-						}
-					}
+					data: this.form
 				});
-			}else{
-				uni.request({
-					url: 'http://localhost:3000/api/products',
+				console.log('修改商品信息', res);
+				if (res !== undefined) {
+					this.$util.toast('修改成功');
+					setTimeout(() => {
+						uni.navigateBack();
+					}, 500);
+				}
+			} else {
+				const res = await this.$util.request({
+					requestUrl: 'api/products',
 					method: 'POST',
-					data: this.form,
-					success: res => {
-						console.log('添加商品:',res);
-						
-						uni.showToast({
-						    title: res.data.message,
-						});
-						
-						if(res.data.code==1){
-							this.form={
-								name: '',
-								image: '',
-								intro: '',
-								online: true,
-								hot: true,
-								category: '',
-								type:'',
-								id:'',
-							};
-						}
-					}
+					data: this.form
 				});
+				console.log('添加商品', res);
+				if (res !== undefined) {
+					this.$util.toast('添加成功');
+					this.form = {
+						name: '',
+						image: '',
+						intro: '',
+						online: true,
+						hot: true,
+						category: '',
+						type: '',
+						id: ''
+					};
+				}
 			}
 		},
 		radioChange: function(evt) {
 			for (let i = 0; i < this.items.length; i++) {
 				if (this.items[i].id === evt.target.value) {
+					this.current=i;
 					this.form.category = this.items[i].id;
 					break;
 				}

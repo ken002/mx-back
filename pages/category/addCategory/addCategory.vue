@@ -15,32 +15,25 @@
 			}
 		},
 		methods: {
-			addCategory(){
+			async addCategory(){
 				if(this.name===''){
-					uni.showToast({
-					    title: '请输入类别',
-					});
+					this.$util.toast('请输入类别');
 					return;
 				}
 				
-				uni.request({
-						url: 'http://localhost:3000/api/category',
-						method: 'POST',
-						data: {
-							name: this.name,
-						},
-						success: res => {
-							console.log('添加分类:',res);
-							
-							uni.showToast({
-							    title: res.data.message,
-							});
-							
-							if(res.data.code===1){
-								this.name='';
-							}
-						}
-					});
+				const res = await this.$util.request({
+					requestUrl:'api/category',
+					method:'POST',
+					data: {
+						name: this.name,
+					},
+				});
+				console.log('添加分类',res);
+				
+				if(res!==undefined){
+					this.$util.toast('添加成功');
+					this.name='';
+				}
 			}
 		}
 	}
