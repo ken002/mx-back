@@ -11,11 +11,11 @@
 		<view><input v-model="form.intro" placeholder="输入描述" type="text" /></view>
 		<view>
 			<view>上架</view>
-			<switch :checked="form.online" @change="switch1Change" />
+			<switch :checked="form.online==1?true:false" @change="switch1Change" />
 		</view>
 		<view>
 			<view>推荐</view>
-			<switch :checked="form.hot" @change="switch2Change" />
+			<switch :checked="form.hot==1?true:false" @change="switch2Change" />
 		</view>
 		<image :src="form.image"></image>
 		<button @tap="uploadImage">上传图片</button>
@@ -33,8 +33,8 @@ export default {
 				name: '',
 				image: '',
 				intro: '',
-				online: true,
-				hot: true,
+				online: 1,
+				hot: 0,
 				category: ''
 			},
 			type: '',
@@ -54,7 +54,7 @@ export default {
 				this.confirmBtnName = '修改';
 				this.selectDetail();
 			}
-		})
+		})();
 	},
 	methods: {
 		async selectCategory() {
@@ -67,6 +67,11 @@ export default {
 				this.items = res.data.data;
 				if (this.items.length === 0) {
 					this.$util.toast('无类别可选，请先去添加类别');
+				}else{
+					if(this.type!=='modify'){
+						this.current=0;
+						this.form.category=this.items[0].id;
+					}
 				}
 			}
 		},
@@ -77,7 +82,7 @@ export default {
 			console.log('查询商品详情', res);
 			if (res !== undefined) {
 				this.form = res.data.data;
-				for(const i=0;i<this.items.length;i++){
+				for(let i=0;i<this.items.length;i++){
 					if(this.items[i].id===this.form.category){
 						this.current=i;
 						this.form.category = this.items[i].id;
@@ -137,13 +142,14 @@ export default {
 				console.log('添加商品', res);
 				if (res !== undefined) {
 					this.$util.toast('添加成功');
+					this.current=0;
 					this.form = {
 						name: '',
 						image: '',
 						intro: '',
-						online: true,
-						hot: true,
-						category: '',
+						online: 1,
+						hot: 0,
+						category: this.items[0].id,
 						type: '',
 						id: ''
 					};
@@ -160,10 +166,18 @@ export default {
 			}
 		},
 		switch1Change: function(e) {
-			this.form.online = e.target.value;
+			if(e.target.value){
+				this.form.online = 1;
+			}else{
+				this.form.online = 0;
+			}
 		},
 		switch2Change: function(e) {
-			this.form.hot = e.target.value;
+			if(e.target.value){
+				this.form.hot = 1;
+			}else{
+				this.form.hot = 0;
+			}
 		}
 	}
 };

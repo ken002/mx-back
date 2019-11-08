@@ -14,18 +14,6 @@
 				<button @tap="addCategory">添加分类</button>
 			</view>
 		</view>
-		<view>
-			<h1>圈子模块：</h1>
-			<view>
-				
-			</view>
-		</view>
-		<view>
-			<h1>个人中心模块：</h1>
-			<view>
-				
-			</view>
-		</view>
 	</view>
 </template>
 
@@ -60,6 +48,11 @@ export default {
 				url:'/pages/product/selectProducts/selectProducts'
 			})
 		},
+		searchProductByName(){
+			uni.navigateTo({
+				url:'/pages/product/searchProductByName/searchProductByName'
+			})
+		}
 	}
 };
 </script>

@@ -10,29 +10,33 @@ async function request({
 		method,
 		data
 	});
-
-	if (res.statusCode == 200) {
-		if (res.data.code === 1) {
-			return res;
-		} else {
-			toast(res.data.message);
+	
+	if(res===undefined){
+		toast('请求错误');
+	}else{
+		if (res.statusCode == 200) {
+			if (res.data.code === 1) {
+				return res;
+			} else {
+				toast(res.data.message);
+			}
 		}
-	}
-	if (res.statusCode == 400) {
-		toast('参数错误');
-		return;
-	}
-	if (res.statusCode == 404) {
-		toast('请求地址错误');
-		return;
-	}
-	if (res.statusCode == 415) {
-		toast('请求方式错误');
-		return;
-	}
-	if (res.statusCode == 500) {
-		toast('服务器错误');
-		return;
+		if (res.statusCode == 400) {
+			toast('参数错误');
+			return;
+		}
+		if (res.statusCode == 404) {
+			toast('请求地址错误');
+			return;
+		}
+		if (res.statusCode == 415) {
+			toast('请求方式错误');
+			return;
+		}
+		if (res.statusCode == 500) {
+			toast('服务器错误');
+			return;
+		}
 	}
 }
 
@@ -71,9 +75,9 @@ async function uploadImage(path) {
 }
 
 export default {
-	url,
-	request,
-	toast,
-	selectImage,
-	uploadImage
+	url,//url
+	request,//请求
+	toast,//提示
+	selectImage,//选择图片
+	uploadImage,//上传图片
 }
