@@ -1,4 +1,7 @@
-var url = "http://localhost:3000/";
+//本机
+// var url = "http://localhost:80/";
+//线上
+var url = "http://120.26.73.52:80/";
 
 async function request({
 	requestUrl,
@@ -10,7 +13,8 @@ async function request({
 		method,
 		data
 	});
-	
+	// console.log(res);
+	// console.log(error);
 	if(res===undefined){
 		toast('请求错误');
 	}else{
