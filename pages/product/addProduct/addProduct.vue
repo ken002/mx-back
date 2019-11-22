@@ -14,8 +14,8 @@
 			<switch :checked="form.online==1?true:false" @change="switch1Change" />
 		</view>
 		<view>
-			<view>推荐</view>
-			<switch :checked="form.hot==1?true:false" @change="switch2Change" />
+			<view>属于本店</view>
+			<switch :checked="form.pType==1?true:false" @change="switch2Change" />
 		</view>
 		<image :src="form.image"></image>
 		<button @tap="uploadImage">上传图片</button>
@@ -34,7 +34,7 @@ export default {
 				image: '',
 				intro: '',
 				online: 1,
-				hot: 0,
+				pType: 1,
 				category: ''
 			},
 			type: '',
@@ -148,7 +148,7 @@ export default {
 						image: '',
 						intro: '',
 						online: 1,
-						hot: 0,
+						pType: 1,
 						category: this.items[0].id,
 						type: '',
 						id: ''
@@ -174,9 +174,9 @@ export default {
 		},
 		switch2Change: function(e) {
 			if(e.target.value){
-				this.form.hot = 1;
+				this.form.pType = 1;
 			}else{
-				this.form.hot = 0;
+				this.form.pType = 0;
 			}
 		}
 	}

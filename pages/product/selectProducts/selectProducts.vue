@@ -45,7 +45,7 @@ export default {
 					limit: 10,
 					page: this.page,
 					name: this.name,
-					hot:null,
+					pType:null,
 					online:null,
 				}
 			});
@@ -91,7 +91,7 @@ export default {
 					limit: 10,
 					page: this.page,
 					name: null,
-					hot:null,
+					pType:null,
 					online:null,
 				}
 			});

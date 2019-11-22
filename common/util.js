@@ -1,7 +1,7 @@
 //本机
-// var url = "http://localhost:80/";
+var url = "http://localhost:80/";
 //线上
-var url = "http://120.26.73.52:80/";
+// var url = "http://120.26.73.52:80/";
 
 async function request({
 	requestUrl,
