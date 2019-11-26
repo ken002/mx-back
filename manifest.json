@@ -73,9 +73,12 @@
     },
     "h5" : {
         "router" : {
-            "base" : "/back/"
+            "base" : ""
         },
         "title" : "MX美甲管理系统",
-        "domain" : "180.76.175.210"
+        "domain" : "180.76.175.210",
+        "devServer" : {
+            "https" : false
+        }
     }
 }
