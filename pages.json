@@ -20,6 +20,14 @@
             "path" : "pages/product/selectProducts/selectProducts",
             "style" : {}
         }
+        ,{
+            "path" : "pages/ad/adList/adList",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/ad/addAd/addAd",
+            "style" : {}
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",

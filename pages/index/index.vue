@@ -1,6 +1,13 @@
 <template>
 	<view class="content">
 		<view>
+			<h1>广告模块：</h1>
+			<view>
+				<button @tap="selectAd">查询广告列表</button>
+				<button @tap="addAd">添加广告</button>
+			</view>
+		</view>
+		<view>
 			<h1>商品模块：</h1>
 			<view>
 				<button @tap="selectProduct">按分页查询商品</button>
@@ -52,7 +59,18 @@ export default {
 			uni.navigateTo({
 				url:'/pages/product/searchProductByName/searchProductByName'
 			})
-		}
+		},
+		selectAd(){
+			uni.navigateTo({
+				url:'/pages/ad/adList/adList'
+			})
+		},
+		addAd(){
+			uni.navigateTo({
+				url:'/pages/ad/addAd/addAd'
+			})
+		},
+		
 	}
 };
 </script>
