@@ -1,7 +1,7 @@
 <template>
 	<view>
-		<input v-model="intro" type="text" placeholder="输入说明">
-		<image :src="image"></image>
+		<input v-model="form.intro" type="text" placeholder="输入说明">
+		<image :src="form.image"></image>
 		<button @tap="uploadImage">上传图片</button>
 		<button @tap="confirm">{{ confirmBtnName }}</button>
 	</view>
@@ -11,30 +11,82 @@
 	export default {
 		data() {
 			return {
-				intro:'',
-				image:'',
+				form:{
+					intro:'',
+					image:'',
+				},
 				confirmBtnName: '确定'
+			}
+		},
+		onLoad(option) {
+			console.log(option);
+			this.type = option.type;
+			this.id = option.id;
+			
+			if (this.type === 'modify') {
+				this.confirmBtnName = '修改';
+				this.selectDetail();
 			}
 		},
 		methods: {
 			async toUploadImage(path) {
 				const backPath = await this.$util.uploadImage(path);
-				this.image = backPath;
+				this.form.image = backPath;
 			},
 			async uploadImage() {
 				const path = await this.$util.selectImage();
 				this.toUploadImage(path);
 			},
-			confirm(){
-				if(this.intro===''){
+			async confirm(){
+				if(this.form.intro===''){
 					this.$util.toast('请输入说明');
 					return;
 				}
-				if(this.image===''){
+				if(this.form.image===''){
 					this.$util.toast('请上传banner图');
 					return;
 				}
-			}
+				
+				if (this.type === 'modify') {
+					const res = await this.$util.request({
+						requestUrl: 'api/ad/' + this.id,
+						method: 'PUT',
+						data: this.form
+					});
+					console.log('修改广告', res);
+					if (res !== undefined) {
+						this.$util.toast('修改成功');
+						setTimeout(() => {
+							uni.navigateBack();
+						}, 500);
+					}
+				}else{
+					const res = await this.$util.request({
+						requestUrl: 'api/ad',
+						method: 'POST',
+						data: this.form
+					});
+					console.log('添加广告', res);
+					if(res!==undefined){
+						this.$util.toast('添加成功');
+						
+						this.form = {
+							image: '',
+							intro: '',
+						};
+					}
+				}
+				
+			},
+			async selectDetail() {
+				const res = await this.$util.request({
+					requestUrl: 'api/ad/' + this.id
+				});
+				console.log('查询广告', res);
+				if (res !== undefined) {
+					this.form = res.data.data;
+				}
+			},
 		}
 	}
 </script>
