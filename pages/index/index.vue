@@ -1,6 +1,13 @@
 <template>
 	<view class="content">
 		<view>
+			<h1>公告模块：</h1>
+			<view>
+				<button @tap="selectNotice">查询公告列表</button>
+				<button @tap="addNotice">添加公告</button>
+			</view>
+		</view>
+		<view>
 			<h1>广告模块：</h1>
 			<view>
 				<button @tap="selectAd">查询广告列表</button>
@@ -35,6 +42,16 @@ export default {
 		
 	},
 	methods: {
+		selectNotice(){
+			uni.navigateTo({
+				url:'/pages/notice/noticeList/noticeList'
+			})
+		},
+		addNotice(){
+			uni.navigateTo({
+				url:'/pages/notice/addNotice/addNotice'
+			})
+		},
 		selectCategory(){
 			uni.navigateTo({
 				url:'/pages/category/selectCategory/selectCategory'

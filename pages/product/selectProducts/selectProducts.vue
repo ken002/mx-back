@@ -65,15 +65,23 @@ export default {
 			}
 		},
 		async toDelete(id) {
-			const res = await this.$util.request({
-				requestUrl: 'api/products/' + id,
-				method: 'DELETE'
+			uni.showModal({
+				title: '删除',
+				content: '确定删除？',
+				success: async res => {
+					if (res.confirm) {
+						const res = await this.$util.request({
+							requestUrl: 'api/products/' + id,
+							method: 'DELETE'
+						});
+						console.log('删除商品：', res);
+						if (res !== undefined) {
+							this.page = 1;
+							this.productList();
+						}
+					}
+				}
 			});
-			console.log('删除商品：', res);
-			if (res !== undefined) {
-				this.page = 1;
-				this.productList();
-			}
 		},
 		nextPage() {
 			this.page++;

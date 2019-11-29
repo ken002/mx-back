@@ -1,8 +1,8 @@
 <template>
 	<view>
-		<input v-model="form.intro" type="text" placeholder="输入说明">
-		<image :src="form.image"></image>
-		<button @tap="uploadImage">上传图片</button>
+		<input v-model="form.title" type="text" placeholder="标题">
+		<textarea v-model="form.content" placeholder="公告内容" />
+		
 		<button @tap="confirm">{{ confirmBtnName }}</button>
 	</view>
 </template>
@@ -11,16 +11,16 @@
 	export default {
 		data() {
 			return {
+				confirmBtnName:'确定',
 				form:{
-					intro:'',
-					image:'',
+					title:'',
+					content:''
 				},
-				confirmBtnName: '确定',
 				type:null,
 				id:null,
 			}
 		},
-		onLoad(option) {
+		onLoad(option){
 			console.log(option);
 			this.type = option.type;
 			this.id = option.id;
@@ -31,31 +31,23 @@
 			}
 		},
 		methods: {
-			async toUploadImage(path) {
-				const backPath = await this.$util.uploadImage(path);
-				this.form.image = backPath;
-			},
-			async uploadImage() {
-				const path = await this.$util.selectImage();
-				this.toUploadImage(path);
-			},
 			async confirm(){
-				if(this.form.intro===''){
-					this.$util.toast('请输入说明');
+				if(this.form.title===''){
+					this.$util.toast('请输入标题');
 					return;
 				}
-				if(this.form.image===''){
-					this.$util.toast('请上传banner图');
+				if(this.form.content===''){
+					this.$util.toast('请输入内容');
 					return;
 				}
 				
 				if (this.type === 'modify') {
 					const res = await this.$util.request({
-						requestUrl: 'api/ad/' + this.id,
+						requestUrl: 'api/notice/' + this.id,
 						method: 'PUT',
 						data: this.form
 					});
-					console.log('修改广告', res);
+					console.log('修改公告', res);
 					if (res !== undefined) {
 						this.$util.toast('修改成功');
 						setTimeout(() => {
@@ -64,17 +56,17 @@
 					}
 				}else{
 					const res = await this.$util.request({
-						requestUrl: 'api/ad',
+						requestUrl: 'api/notice',
 						method: 'POST',
 						data: this.form
 					});
-					console.log('添加广告', res);
+					console.log('添加公告', res);
 					if(res!==undefined){
 						this.$util.toast('添加成功');
 						
 						this.form = {
-							image: '',
-							intro: '',
+							title: '',
+							content: '',
 						};
 					}
 				}
@@ -82,9 +74,9 @@
 			},
 			async selectDetail() {
 				const res = await this.$util.request({
-					requestUrl: 'api/ad/' + this.id
+					requestUrl: 'api/notice/' + this.id
 				});
-				console.log('查询广告', res);
+				console.log('查询公告', res);
 				if (res !== undefined) {
 					this.form = res.data.data;
 				}

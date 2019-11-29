@@ -28,10 +28,18 @@
             "path" : "pages/ad/addAd/addAd",
             "style" : {}
         }
+        ,{
+            "path" : "pages/notice/noticeList/noticeList",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/notice/addNotice/addNotice",
+            "style" : {}
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "MX美甲后台管理",
+		"navigationBarTitleText": "MX美甲管理系统",
 		"navigationBarBackgroundColor": "#F8F8F8",
 		"backgroundColor": "#F8F8F8"
 	}
