@@ -91,13 +91,10 @@ export default {
 				}
 			}
 		},
-		async toUploadImage(path) {
-			const backPath = await this.$util.uploadImage(path);
-			this.form.image = backPath;
-		},
 		async uploadImage() {
 			const path = await this.$util.selectImage();
-			this.toUploadImage(path);
+			const backPath = await this.$util.uploadImage(path);
+			this.form.image = backPath;
 		},
 		async confirm() {
 			if (this.form.category === '') {

@@ -4,11 +4,15 @@
     "pages/category/selectCategory/selectCategory",
     "pages/category/addCategory/addCategory",
     "pages/product/addProduct/addProduct",
-    "pages/product/selectProducts/selectProducts"
+    "pages/product/selectProducts/selectProducts",
+    "pages/ad/adList/adList",
+    "pages/ad/addAd/addAd",
+    "pages/notice/noticeList/noticeList",
+    "pages/notice/addNotice/addNotice"
   ],
   "window": {
     "navigationBarTextStyle": "black",
-    "navigationBarTitleText": "MX美甲后台管理",
+    "navigationBarTitleText": "MX美甲管理系统",
     "navigationBarBackgroundColor": "#F8F8F8",
     "backgroundColor": "#F8F8F8"
   },
