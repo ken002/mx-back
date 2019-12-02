@@ -1,8 +1,8 @@
 //本机
-// var url = "http://localhost:81/";
+var url = "http://localhost:81/";
 
 //线上
-var url = "http://180.76.175.210:81/";
+// var url = "http://180.76.175.210:81/";
 // var url = "http://www.jinluoyang.top:81/";
 
 async function request({

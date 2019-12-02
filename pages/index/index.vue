@@ -1,6 +1,12 @@
 <template>
 	<view class="content">
 		<view>
+			<h1>用户模块：</h1>
+			<view>
+				<button @tap="selectUsers">查询用户列表</button>
+			</view>
+		</view>
+		<view>
 			<h1>公告模块：</h1>
 			<view>
 				<button @tap="selectNotice">查询公告列表</button>
@@ -42,6 +48,11 @@ export default {
 		
 	},
 	methods: {
+		selectUsers(){
+			uni.navigateTo({
+				url:'/pages/user/userList/userList'
+			})
+		},
 		selectNotice(){
 			uni.navigateTo({
 				url:'/pages/notice/noticeList/noticeList'

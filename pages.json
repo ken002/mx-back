@@ -36,6 +36,10 @@
             "path" : "pages/notice/addNotice/addNotice",
             "style" : {}
         }
+        ,{
+            "path" : "pages/user/userList/userList",
+            "style" : {}
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
