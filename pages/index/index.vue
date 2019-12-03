@@ -3,7 +3,7 @@
 		<view>
 			<h1>用户模块：</h1>
 			<view>
-				<button @tap="selectUsers">查询用户列表</button>
+				<button @tap="selectUsers">按分页查询用户</button>
 			</view>
 		</view>
 		<view>
