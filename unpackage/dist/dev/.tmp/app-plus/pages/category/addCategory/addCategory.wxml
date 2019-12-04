@@ -1,0 +1,1 @@
+<view><view><input placeholder="请输入类别" type="text" data-event-opts="{{[['input',[['__set_model',['','name','$event',[]]]]]]}}" value="{{name}}" bindinput="__e"/></view><button data-event-opts="{{[['tap',[['addCategory',['$event']]]]]}}" bindtap="__e">确定</button></view>

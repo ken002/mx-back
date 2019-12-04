@@ -18,14 +18,14 @@
 			<switch :checked="form.pType == 1 ? true : false" @change="switch2Change" />
 		</view>
 		<view>
-			<view>选择上传图片还是视频：</view>
+			<view>上传图片/视频：(选择视频的话都得传，非视频的话只传图片)</view>
 			<view>视频</view>
 			<switch :checked="form.showType == 1 ? true : false" @change="switch3Change" />
 		</view>
-		<image v-if="form.showType === 0" :src="form.image"></image>
-		<video v-else :src="form.video"></video>
-		<button v-if="form.showType === 0" @tap="uploadImage">上传图片</button>
-		<button v-else @tap="uploadVideo">上传视频</button>
+		<image :src="form.image"></image>
+		<video :src="form.video"></video>
+		<button @tap="uploadImage">上传图片</button>
+		<button @tap="uploadVideo">上传视频</button>
 		<button @tap="confirm">{{ confirmBtnName }}</button>
 	</view>
 </template>
@@ -144,7 +144,7 @@ export default {
 				return;
 			}
 
-			if (this.form.showType === 0 && this.form.image === '') {
+			if (this.form.image === '') {
 				this.$util.toast('请上传图片');
 				return;
 			}
@@ -219,7 +219,6 @@ export default {
 		switch3Change: function(e) {
 			if (e.target.value) {
 				this.form.showType = 1;
-				this.form.image = '';
 			} else {
 				this.form.showType = 0;
 				this.form.video = '';

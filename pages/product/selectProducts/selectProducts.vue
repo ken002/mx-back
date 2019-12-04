@@ -7,7 +7,8 @@
 		</view>
 
 		<view @tap="toDetail(item.id)" v-for="(item, index) in items" :key="index">
-			<image class="image" :src="item.image"></image>
+			<image v-if="item.showType===0" class="image" :src="item.image"></image>
+			<video v-else :src="item.video"></video>
 			<view>{{ item.name }}</view>
 			<button @tap.stop="toDelete(item.id)">删除</button>
 		</view>
