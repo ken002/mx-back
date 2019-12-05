@@ -38,7 +38,7 @@
 					}
 				});
 				console.log('查询用户列表：', res);
-				if (res !== undefined) {
+				if (res) {
 					if (res.data.data.length < 10) {
 						this.btnShow = false;
 					}

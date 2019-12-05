@@ -36,7 +36,7 @@ export default {
 						});
 						console.log('删除广告', res);
 
-						if (res !== undefined) {
+						if (res) {
 							this.$util.toast('删除成功');
 							this.selectAds();
 						}
@@ -50,7 +50,7 @@ export default {
 			});
 			console.log('查询所有广告：', res);
 
-			if (res !== undefined) {
+			if (res) {
 				this.items = res.data.data;
 			}
 		}

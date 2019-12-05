@@ -53,7 +53,7 @@
 						data: this.form
 					});
 					console.log('修改广告', res);
-					if (res !== undefined) {
+					if (res) {
 						this.$util.toast('修改成功');
 						setTimeout(() => {
 							uni.navigateBack();
@@ -66,7 +66,7 @@
 						data: this.form
 					});
 					console.log('添加广告', res);
-					if(res!==undefined){
+					if(res){
 						this.$util.toast('添加成功');
 						
 						this.form = {
@@ -82,7 +82,7 @@
 					requestUrl: 'api/ad/' + this.id
 				});
 				console.log('查询广告', res);
-				if (res !== undefined) {
+				if (res) {
 					this.form = res.data.data;
 				}
 			},

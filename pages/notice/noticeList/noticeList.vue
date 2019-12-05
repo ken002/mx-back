@@ -36,7 +36,7 @@
 							});
 							console.log('删除公告',res);
 							
-							if(res!==undefined){
+							if(res){
 								this.$util.toast('删除成功');
 								this.selectNotices();
 							}
@@ -50,7 +50,7 @@
 				});
 				console.log('查询所有公告：',res);
 				
-				if(res!==undefined){
+				if(res){
 					this.items = res.data.data;
 				}
 			},

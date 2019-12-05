@@ -51,7 +51,7 @@ export default {
 				}
 			});
 			console.log('关键字搜索：', res);
-			if (res !== undefined) {
+			if (res) {
 				if (res.data.data.length > 0) {
 					if (res.data.data.length < 10) {
 						this.btnShow = false;
@@ -76,7 +76,7 @@ export default {
 							method: 'DELETE'
 						});
 						console.log('删除商品：', res);
-						if (res !== undefined) {
+						if (res) {
 							this.page = 1;
 							this.productList();
 						}
@@ -106,7 +106,7 @@ export default {
 			});
 			console.log('查询商品列表：', res);
 
-			if (res !== undefined) {
+			if (res) {
 				if (res.data.data.length < 10) {
 					this.btnShow = false;
 				}

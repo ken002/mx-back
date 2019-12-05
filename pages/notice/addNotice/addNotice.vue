@@ -48,7 +48,7 @@
 						data: this.form
 					});
 					console.log('修改公告', res);
-					if (res !== undefined) {
+					if (res) {
 						this.$util.toast('修改成功');
 						setTimeout(() => {
 							uni.navigateBack();
@@ -61,7 +61,7 @@
 						data: this.form
 					});
 					console.log('添加公告', res);
-					if(res!==undefined){
+					if(res){
 						this.$util.toast('添加成功');
 						
 						this.form = {
@@ -77,7 +77,7 @@
 					requestUrl: 'api/notice/' + this.id
 				});
 				console.log('查询公告', res);
-				if (res !== undefined) {
+				if (res) {
 					this.form = res.data.data;
 				}
 			},

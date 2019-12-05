@@ -30,7 +30,7 @@
 				});
 				console.log('添加分类',res);
 				
-				if(res!==undefined){
+				if(res){
 					this.$util.toast('添加成功');
 					this.name='';
 				}

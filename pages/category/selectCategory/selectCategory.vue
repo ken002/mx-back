@@ -26,7 +26,7 @@ export default {
 			});
 			console.log('查询所有类别：',res);
 			
-			if(res!==undefined){
+			if(res){
 				this.items = res.data.data;
 			}
 		},
@@ -42,7 +42,7 @@ export default {
 						});
 						console.log('删除某类别',res);
 						
-						if(res!==undefined){
+						if(res){
 							this.$util.toast('删除成功');
 							this.selectCategory();
 						}

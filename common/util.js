@@ -15,10 +15,10 @@ async function request({
 		method,
 		data
 	});
-	// console.log(res);
-	// console.log(error);
+	
 	if (res === undefined) {
-		toast('请求错误');
+		toast('连接服务失败');
+		return false;
 	} else {
 		if (res.statusCode == 200) {
 			if (res.data.code === 1) {
@@ -29,19 +29,19 @@ async function request({
 		}
 		if (res.statusCode == 400) {
 			toast('参数错误');
-			return;
+			return false;
 		}
 		if (res.statusCode == 404) {
 			toast('请求地址错误');
-			return;
+			return false;
 		}
 		if (res.statusCode == 415) {
 			toast('请求方式错误');
-			return;
+			return false;
 		}
 		if (res.statusCode == 500) {
-			toast('服务器错误');
-			return;
+			toast('服务器内部错误');
+			return false;
 		}
 	}
 }
@@ -83,10 +83,31 @@ async function uploadImage(path) {
 	})
 }
 
+function navigateTo(url = "", params = {}) {
+	url += '?params=' + JSON.stringify(params);
+	uni.navigateTo({
+		url
+	})
+}
+
+function toLogin(){
+	navigateTo('/pages/my/login/login');
+}
+
+function toProductDetail(productDetail){
+	const params={
+		productDetail
+	}
+	navigateTo('/pages/index/productDetail/productDetail',params);
+}
+
 export default {
 	url, //url
 	request, //请求
 	toast, //提示
 	selectImage, //选择图片
 	uploadImage, //上传图片
+	navigateTo,//跳转页面
+	toLogin,//去登录
+	toProductDetail,//去详情	
 }

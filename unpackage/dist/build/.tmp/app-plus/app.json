@@ -8,7 +8,8 @@
     "pages/ad/adList/adList",
     "pages/ad/addAd/addAd",
     "pages/notice/noticeList/noticeList",
-    "pages/notice/addNotice/addNotice"
+    "pages/notice/addNotice/addNotice",
+    "pages/user/userList/userList"
   ],
   "window": {
     "navigationBarTextStyle": "black",

@@ -1,2 +1,2 @@
-setCssToHead(["@charset \x22UTF-8\x22;\n.",[1],"image.",[1],"data-v-38e633e2 { width: ",[0,200],"; height: ",[0,200],"; }\n",],undefined,{path:"./pages/product/selectProducts/selectProducts.wxss"})();
+setCssToHead(["@charset \x22UTF-8\x22;\n.",[1],"image.",[1],"data-v-95dd13ec { width: ",[0,200],"; height: ",[0,200],"; }\n",],undefined,{path:"./pages/product/selectProducts/selectProducts.wxss"})();
 document.dispatchEvent(new CustomEvent("generateFuncReady", { detail: { generateFunc: $gwx('./pages/product/selectProducts/selectProducts.wxml') } }));

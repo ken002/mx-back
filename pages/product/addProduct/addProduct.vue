@@ -72,7 +72,7 @@ export default {
 			});
 			console.log('查询所有类别：', res);
 
-			if (res !== undefined) {
+			if (res) {
 				this.items = res.data.data;
 				if (this.items.length === 0) {
 					this.$util.toast('无类别可选，请先去添加类别');
@@ -89,7 +89,7 @@ export default {
 				requestUrl: 'api/products/' + this.id
 			});
 			console.log('查询商品详情', res);
-			if (res !== undefined) {
+			if (res) {
 				this.form = res.data.data;
 				for (let i = 0; i < this.items.length; i++) {
 					if (this.items[i].id === this.form.category) {
@@ -162,7 +162,7 @@ export default {
 					data: this.form
 				});
 				console.log('修改商品信息', res);
-				if (res !== undefined) {
+				if (res) {
 					this.$util.toast('修改成功');
 					setTimeout(() => {
 						uni.navigateBack();
@@ -175,7 +175,7 @@ export default {
 					data: this.form
 				});
 				console.log('添加商品', res);
-				if (res !== undefined) {
+				if (res) {
 					this.$util.toast('添加成功');
 					this.current = 0;
 					this.form = {
