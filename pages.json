@@ -40,6 +40,14 @@
             "path" : "pages/user/userList/userList",
             "style" : {}
         }
+        ,{
+            "path" : "pages/color/colorList/colorList",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/color/addColor/addColor",
+            "style" : {}
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",

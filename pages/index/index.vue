@@ -21,6 +21,13 @@
 			</view>
 		</view>
 		<view>
+			<h1>色板模块：</h1>
+			<view>
+				<button @tap="selectColor">查询色板列表</button>
+				<button @tap="addColor">添加色板</button>
+			</view>
+		</view>
+		<view>
 			<h1>商品模块：</h1>
 			<view>
 				<button @tap="selectProduct">按分页查询商品</button>
@@ -48,6 +55,16 @@ export default {
 		
 	},
 	methods: {
+		selectColor(){
+			uni.navigateTo({
+				url:'/pages/color/colorList/colorList'
+			})
+		},
+		addColor(){
+			uni.navigateTo({
+				url:'/pages/color/addColor/addColor'
+			})
+		},
 		selectUsers(){
 			uni.navigateTo({
 				url:'/pages/user/userList/userList'
