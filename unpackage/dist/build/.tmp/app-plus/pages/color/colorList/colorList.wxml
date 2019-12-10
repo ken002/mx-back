@@ -1,0 +1,1 @@
+<view><block wx:for="{{items}}" wx:for-item="item" wx:for-index="index"><view><image src="{{item.image}}"></image><text>{{"￥"+item.price}}</text><button data-event-opts="{{[['tap',[['toDelete',['$0'],[[['items','',index,'id']]]]]]]}}" catchtap="__e">删除</button></view></block></view>

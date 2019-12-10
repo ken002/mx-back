@@ -9,7 +9,9 @@
     "pages/ad/addAd/addAd",
     "pages/notice/noticeList/noticeList",
     "pages/notice/addNotice/addNotice",
-    "pages/user/userList/userList"
+    "pages/user/userList/userList",
+    "pages/color/colorList/colorList",
+    "pages/color/addColor/addColor"
   ],
   "window": {
     "navigationBarTextStyle": "black",

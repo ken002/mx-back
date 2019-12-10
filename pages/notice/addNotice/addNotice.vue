@@ -78,7 +78,7 @@
 				});
 				console.log('查询公告', res);
 				if (res) {
-					this.form = res.data.data;
+					this.form = res.data.data[0];
 				}
 			},
 		}

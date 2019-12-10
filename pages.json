@@ -48,6 +48,22 @@
             "path" : "pages/color/addColor/addColor",
             "style" : {}
         }
+        ,{
+            "path" : "pages/version/selectVersion/selectVersion",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/version/addVersion/addVersion",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/recharge/selectRecharge/selectRecharge",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/recharge/addRecharge/addRecharge",
+            "style" : {}
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",

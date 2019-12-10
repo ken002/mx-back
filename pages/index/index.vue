@@ -41,6 +41,20 @@
 				<button @tap="addCategory">添加分类</button>
 			</view>
 		</view>
+		<view>
+			<h1>充值模块：</h1>
+			<view>
+				<button @tap="selectRecharge">查询</button>
+				<button @tap="addRecharge">添加</button>
+			</view>
+		</view>
+		<!-- <view>
+			<h1>版本模块：</h1>
+			<view>
+				<button @tap="selectVersion">查询</button>
+				<button @tap="addVersion">添加</button>
+			</view>
+		</view> -->
 	</view>
 </template>
 
@@ -55,6 +69,26 @@ export default {
 		
 	},
 	methods: {
+		selectVersion(){
+			uni.navigateTo({
+				url:'/pages/version/selectVersion/selectVersion'
+			})
+		},
+		addVersion(){
+			uni.navigateTo({
+				url:'/pages/version/addVersion/addVersion'
+			})
+		},
+		selectRecharge(){
+			uni.navigateTo({
+				url:'/pages/recharge/selectRecharge/selectRecharge'
+			})
+		},
+		addRecharge(){
+			uni.navigateTo({
+				url:'/pages/recharge/addRecharge/addRecharge'
+			})
+		},
 		selectColor(){
 			uni.navigateTo({
 				url:'/pages/color/colorList/colorList'

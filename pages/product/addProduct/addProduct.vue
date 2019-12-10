@@ -90,7 +90,7 @@ export default {
 			});
 			console.log('查询商品详情', res);
 			if (res) {
-				this.form = res.data.data;
+				this.form = res.data.data[0];
 				for (let i = 0; i < this.items.length; i++) {
 					if (this.items[i].id === this.form.category) {
 						this.current = i;
