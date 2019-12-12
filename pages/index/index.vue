@@ -48,13 +48,13 @@
 				<button @tap="addRecharge">添加</button>
 			</view>
 		</view>
-		<!-- <view>
+		<view>
 			<h1>版本模块：</h1>
 			<view>
 				<button @tap="selectVersion">查询</button>
 				<button @tap="addVersion">添加</button>
 			</view>
-		</view> -->
+		</view>
 	</view>
 </template>
 
