@@ -1,12 +1,7 @@
 <template>
 	<view>
 		<view v-for="(item, index) in items">
-			<view>昵称：{{item.nickName}}</view>
-			<image :src="item.avatarUrl"></image>
-			<view>性别：{{item.gender==1?'男':'女'}}</view>
-			<view>国家：{{item.country}}</view>
-			<view>省份：{{item.province}}</view>
-			<view>城市：{{item.city}}</view>
+			<view>账号：{{item.account}}</view>
 		</view>
 		<button v-show="btnShow" @tap="nextPage">下一页</button>
 	</view>
