@@ -27,6 +27,7 @@
 		<button @tap="uploadImage">上传图片</button>
 		<button @tap="uploadVideo">上传视频</button>
 		<button @tap="confirm">{{ confirmBtnName }}</button>
+		<cpimg ref="cpimg" @result="cpimgOk"></cpimg>
 	</view>
 </template>
 
@@ -125,8 +126,20 @@ export default {
 			});
 		},
 		async uploadImage() {
+			// #ifdef APP-PLUS
 			const path = await this.$util.selectImage();
 			const backPath = await this.$util.uploadImage(path);
+			this.form.image = backPath;
+			// #endif
+			
+			// #ifndef APP-PLUS
+				this.$refs.cpimg._changImg();
+			// #endif
+		},
+		async cpimgOk(res){
+			console.log(res);
+			
+			const backPath = await this.$util.uploadImage(res[0]);
 			this.form.image = backPath;
 		},
 		async confirm() {

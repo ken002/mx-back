@@ -1,1 +1,0 @@
-<view><block wx:for="{{items}}" wx:for-item="item" wx:for-index="index"><view data-event-opts="{{[['tap',[['toModify',['$0'],[[['items','',index,'id']]]]]]]}}" bindtap="__e"><image src="{{item.image}}"></image><text>{{item.intro}}</text><button data-event-opts="{{[['tap',[['toDelete',['$0'],[[['items','',index,'id']]]]]]]}}" catchtap="__e">删除</button></view></block></view>

@@ -1,1 +1,0 @@
-<view><block wx:for="{{items}}" wx:for-item="item" wx:for-index="index" wx:key="index"><view><view><text>{{item.name}}</text><button data-event-opts="{{[['tap',[['deleteCategory',['$0'],[[['items','',index,'id']]]]]]]}}" bindtap="__e">删除</button></view></view></block></view>
