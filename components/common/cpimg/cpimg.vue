@@ -76,6 +76,10 @@ export default {
 			// #ifdef APP-PLUS
 			// uni.hideLoading();
 			// #endif
+			// uni.showLoading({
+			// 	title: '图片压缩处理中',
+			// 	mask: true
+			// });
 			// 获取图片信息
 			// #ifndef H5
 			uni.getImageInfo({
@@ -330,11 +334,13 @@ export default {
 			if (_cgFile.length - 1 >= _index) {
 				this._cpImg();
 			} else {
+				// uni.hideLoading();
 				this.$emit('result', _rtArr);
 			}
 		},
 		_err(src) {
-			this.$util.toast('图片压缩失败');
+			// uni.hideLoading();
+			this.$util.toast('图片压缩处理失败');
 			this.$emit('err', src);
 		}
 	}

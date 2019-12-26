@@ -15,4 +15,9 @@
 <style>
 	/*每个页面公共css */
 	@import './common/uni.css';
+	
+	.image-container,.video-container{
+		width: 300px;
+		height: 225px;
+	}
 </style>

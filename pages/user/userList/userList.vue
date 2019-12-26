@@ -2,6 +2,9 @@
 	<view>
 		<view v-for="(item, index) in items">
 			<view>账号：{{item.account}}</view>
+			<view class="image-container">
+				<image-cache :src="item.avatar"></image-cache>
+			</view>
 		</view>
 		<button v-show="btnShow" @tap="nextPage">下一页</button>
 	</view>

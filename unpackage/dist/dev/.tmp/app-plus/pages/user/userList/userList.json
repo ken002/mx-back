@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "image-cache": "/components/common/image-cache/image-cache"
+  }
+}

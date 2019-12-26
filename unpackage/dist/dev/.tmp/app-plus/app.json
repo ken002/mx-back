@@ -1,0 +1,45 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/category/selectCategory/selectCategory",
+    "pages/category/addCategory/addCategory",
+    "pages/product/addProduct/addProduct",
+    "pages/product/selectProducts/selectProducts",
+    "pages/ad/adList/adList",
+    "pages/ad/addAd/addAd",
+    "pages/notice/noticeList/noticeList",
+    "pages/notice/addNotice/addNotice",
+    "pages/user/userList/userList",
+    "pages/color/colorList/colorList",
+    "pages/color/addColor/addColor",
+    "pages/version/selectVersion/selectVersion",
+    "pages/version/addVersion/addVersion",
+    "pages/recharge/selectRecharge/selectRecharge",
+    "pages/recharge/addRecharge/addRecharge"
+  ],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "MX美甲管理系统",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  },
+  "networkTimeout": {
+    "request": 6000,
+    "connectSocket": 6000,
+    "uploadFile": 15000,
+    "downloadFile": 15000
+  },
+  "nvueCompiler": "uni-app",
+  "renderer": "auto",
+  "splashscreen": {
+    "alwaysShowBeforeRender": true,
+    "autoclose": false
+  },
+  "appname": "MX美甲管理",
+  "compilerVersion": "2.4.6",
+  "usingComponents": {
+    "image-cache": "/components/common/image-cache/image-cache",
+    "video-cache": "/components/current/video-cache/video-cache",
+    "cpimg": "/components/common/cpimg/cpimg"
+  }
+}

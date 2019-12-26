@@ -1,7 +1,9 @@
 <template>
 	<view>
 		<view v-for="(item, index) in items">
-			<image :src="item.image"></image>
+			<view class="image-container">
+				<image-cache :src="item.image"></image-cache>
+			</view>
 			<text>￥{{ item.price }}</text>
 			<button @tap.stop="toDelete(item.id)">删除</button>
 		</view>

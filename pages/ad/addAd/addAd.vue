@@ -1,7 +1,9 @@
 <template>
 	<view>
 		<input v-model="form.intro" type="text" placeholder="输入说明">
-		<image :src="form.image"></image>
+		<view class="image-container">
+			<image-cache :src="form.image"></image-cache>
+		</view>
 		<button @tap="uploadImage">上传图片</button>
 		<button @tap="confirm">{{ confirmBtnName }}</button>
 		<cpimg ref="cpimg" @result="cpimgOk"></cpimg>

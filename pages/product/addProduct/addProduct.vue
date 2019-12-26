@@ -22,8 +22,12 @@
 			<view>视频</view>
 			<switch :checked="form.showType == 1 ? true : false" @change="switch3Change" />
 		</view>
-		<image :src="form.image"></image>
-		<video :src="form.video"></video>
+		<view class="image-container">
+			<image-cache :src="form.image"></image-cache>
+		</view>
+		<view class="video-container">
+			<video-cache :src="form.video"></video-cache>
+		</view>
 		<button @tap="uploadImage">上传图片</button>
 		<button @tap="uploadVideo">上传视频</button>
 		<button @tap="confirm">{{ confirmBtnName }}</button>

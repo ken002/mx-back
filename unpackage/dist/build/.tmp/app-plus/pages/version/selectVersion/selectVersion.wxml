@@ -1,0 +1,1 @@
+<view><block wx:for="{{items}}" wx:for-item="item" wx:for-index="index" wx:key="index"><view><view><block wx:if="{{item.platform===1}}"><text>安卓</text></block><block wx:else><text>ios</text></block><text>{{item.appVersion}}</text><button data-event-opts="{{[['tap',[['deleteVersion',['$0'],[[['items','',index,'id']]]]]]]}}" bindtap="__e">删除</button></view></view></block></view>

@@ -7,8 +7,12 @@
 		</view>
 
 		<view @tap="toDetail(item.id)" v-for="(item, index) in items" :key="index">
-			<image v-if="item.showType===0" class="image" :src="item.image"></image>
-			<video v-else :src="item.video"></video>
+			<view v-if="item.showType===0" class="image-container">
+				<image-cache :src="item.image"></image-cache>
+			</view>
+			<view v-else class="video-container">
+				<video-cache :src="item.video"></video-cache>
+			</view>
 			<view>{{ item.name }}</view>
 			<button @tap.stop="toDelete(item.id)">删除</button>
 		</view>
@@ -123,8 +127,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.image {
-	width: 200rpx;
-	height: 200rpx;
-}
+
 </style>
